@@ -7,7 +7,7 @@ import Home from './components/Home';
 import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import Articles from './components/Articles';
-
+import ArticleIndividual from './components/ArticleIndividual';
 
 
 
@@ -20,11 +20,14 @@ function App() {
   return (
     <div>
       <div className="App">
-        <NavBar user={user} />
+        {/* <NavBar user={user} /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path ="/" element={<NavBar user={user}/>}>
+          <Route index element={<Home />} />
           <Route path="/profile/:username" element={<Profile />} />
           <Route path="/articles" element={<Articles />} />
+          <Route path="/article/:articleId" element={<ArticleIndividual />} />
+          </Route>
         </Routes>
       </div>
     </div>

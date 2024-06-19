@@ -82,6 +82,16 @@
   margin-top: 10px;
 }
 
+.article-individual {
+  padding: 20px;
+}
+
+.article-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
 @media (max-width: 600px) {
   .article-list {
     grid-template-columns: 1fr;
