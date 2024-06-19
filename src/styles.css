@@ -1,0 +1,31 @@
+img{
+    height : 100px;
+    width : 100px;
+
+}
+
+.article-card {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: transform 0.2s;
+  }
+  
+  .article-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .article-image {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .article-card-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
