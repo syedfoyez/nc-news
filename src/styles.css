@@ -12,20 +12,38 @@ img{
     transition: transform 0.2s;
   }
   
-  .article-card:hover {
+.article-card:hover {
     transform: scale(1.05);
-  }
+}
   
-  .article-image {
+.article-image {
     width: 100%;
     height: auto;
     border-radius: 5px;
     margin-top: 10px;
     margin-bottom: 10px;
-  }
+}
   
-  .article-card-footer {
+.article-card-footer {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
-  }
+}
+
+.comment-list {
+    margin-top: 20px;
+}
+  
+.comment-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #ff0000;
+    margin-bottom: 10px;
+}
+  
+@media (max-width: 600px) {
+    .article-list {
+      grid-template-columns: 1fr;
+    }
+}

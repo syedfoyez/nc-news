@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById } from '../utils/api';
+import CommentList from './CommentList';
+import '../styles.css';
 
 const ArticleIndividual = () => {
   const { articleId } = useParams();
@@ -22,6 +24,7 @@ const ArticleIndividual = () => {
           <span>Votes: {article.votes}</span>
           <span>Comments: {article.comment_count}</span>
         </div>
+        <CommentList articleId={articleId} />
       </div>
     ) : (
       <p>Loading...</p>
