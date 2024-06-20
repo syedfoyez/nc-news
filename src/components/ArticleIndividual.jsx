@@ -2,21 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getArticleById, voteOnArticle } from '../utils/api';
 import CommentList from './CommentList';
+import AddComment from './AddComment';
 import '../styles.css';
 
 const ArticleIndividual = () => {
   const { articleId } = useParams();
   const [article, setArticle] = useState(null);
+  const [comments, setComments] = useState([]);
   const [votes, setVotes] = useState(0);
   const [voteError, setVoteError] = useState(null);
 
   useEffect(() => {
+    console.log('Article ID:', articleId);
     getArticleById(articleId)
-    .then((article) => {
+      .then((article) => {
         setArticle(article);
         setVotes(article.votes);
-    })
-    .catch((error) => console.error('Error fetching article:', error));
+      })
+      .catch((error) => console.error('Error fetching article:', error));
   }, [articleId]);
 
   const handleVote = (voteChange) => {
@@ -28,6 +31,10 @@ const ArticleIndividual = () => {
       setVoteError('Error voting on article. Please try again.');
       console.error('Error voting on article:', error);
     });
+  };
+
+  const handleCommentAdded = (newComment) => {
+    setComments((currentComments) => [newComment, ...currentComments]);
   };
 
   return (
@@ -45,6 +52,7 @@ const ArticleIndividual = () => {
           {voteError && <p className="error">{voteError}</p>}
           <span>Comments: {article.comment_count}</span>
         </div>
+        <AddComment articleId={articleId} onCommentAdded={handleCommentAdded} />
         <CommentList articleId={articleId} />
       </div>
     ) : (
@@ -52,6 +60,5 @@ const ArticleIndividual = () => {
     )
   );
 };
-
 
 export default ArticleIndividual;

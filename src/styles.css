@@ -48,8 +48,34 @@ img{
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 5px;
-    background-color: #00aaff;
+    background-color: #00d5ff;
     margin-bottom: 10px;
+}
+  
+.add-comment-form {
+    margin-top: 20px;
+}
+  
+.add-comment-form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+  
+.add-comment-form button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+  
+.add-comment-form button:disabled {
+    background-color: #ccc;
 }
   
 .error {
