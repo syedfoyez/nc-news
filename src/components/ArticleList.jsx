@@ -5,8 +5,6 @@ import { getAllArticles } from '../utils/api';
 const ArticleList = () => {
   const [articles, setArticles] = useState([]);
 
-  console.log(articles)
-
   useEffect(() => {
     getAllArticles()
       .then((articles) => setArticles(articles))
