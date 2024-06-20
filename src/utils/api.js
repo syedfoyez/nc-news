@@ -27,8 +27,15 @@ export const getArticleById = (articleId) => {
     });
   };
 
-  export const getCommentsByArticleId = (articleId) => {
+export const getCommentsByArticleId = (articleId) => {
     return ncNewsApi.get(`/articles/${articleId}/comments`).then(({ data }) => {
       return data.comments;
     });
-  };
+};
+
+export const voteOnArticle = (articleId, voteChange) => {
+    return ncNewsApi.patch(`/articles/${articleId}`, { inc_votes: voteChange })
+      .then(({ data }) => {
+        return data.article;
+    });
+};
