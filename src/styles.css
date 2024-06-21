@@ -130,3 +130,30 @@ img{
 .error {
     color: red;
 }
+
+
+
+
+.topics {
+    padding: 20px;
+  }
+  
+  .topics ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .topics li {
+    margin-bottom: 10px;
+  }
+  
+  .topic-articles {
+    padding: 20px;
+  }
+  
+  .article-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }

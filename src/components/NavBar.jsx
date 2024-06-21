@@ -17,6 +17,7 @@ const NavBar = ({ user }) => {
     <nav className="navbar">
       <Link to="/">Home</Link>
       <Link to="/articles">Articles</Link>
+      <Link to="/topics">Topics</Link>
       <Link to={`/profile/${user.username}`}>{user.name}</Link>
     </nav>
 
