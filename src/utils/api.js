@@ -48,3 +48,14 @@ export const postComment = (articleId, comment) => {
       throw error;
     });
 };
+
+export const deleteCommentById = (commentId) => {
+  return ncNewsApi.delete(`/comments/${commentId}`)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((error) => {
+      console.error('Error deleting comment:', error.response);
+      throw error;
+    });
+};

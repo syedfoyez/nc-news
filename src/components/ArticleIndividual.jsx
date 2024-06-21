@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getArticleById, voteOnArticle } from '../utils/api';
+import { getArticleById, getCommentsByArticleId, voteOnArticle } from '../utils/api';
 import CommentList from './CommentList';
 import AddComment from './AddComment';
 import '../styles.css';
@@ -13,13 +13,18 @@ const ArticleIndividual = () => {
   const [voteError, setVoteError] = useState(null);
 
   useEffect(() => {
-    console.log('Article ID:', articleId);
     getArticleById(articleId)
       .then((article) => {
         setArticle(article);
         setVotes(article.votes);
       })
       .catch((error) => console.error('Error fetching article:', error));
+    
+    getCommentsByArticleId(articleId)
+      .then((comments) => {
+        setComments(comments);
+      })
+      .catch((error) => console.error('Error fetching comments:', error));
   }, [articleId]);
 
   const handleVote = (voteChange) => {
@@ -37,6 +42,10 @@ const ArticleIndividual = () => {
     setComments((currentComments) => [newComment, ...currentComments]);
   };
 
+  const handleCommentDeleted = (commentId) => {
+    setComments((currentComments) => currentComments.filter(comment => comment.comment_id !== commentId));
+  };
+
   return (
     article ? (
       <div className="article-individual">
@@ -50,10 +59,10 @@ const ArticleIndividual = () => {
             <span>Votes: {votes}</span>
           </div>
           {voteError && <p className="error">{voteError}</p>}
-          <span>Comments: {article.comment_count}</span>
+          <span>Comments: {comments.length}</span>
         </div>
         <AddComment articleId={articleId} onCommentAdded={handleCommentAdded} />
-        <CommentList articleId={articleId} />
+        <CommentList comments={comments} onDelete={handleCommentDeleted} />
       </div>
     ) : (
       <p>Loading...</p>
