@@ -8,6 +8,8 @@ import Profile from './components/Profile';
 import NavBar from './components/NavBar';
 import Articles from './components/Articles';
 import ArticleIndividual from './components/ArticleIndividual';
+import Topics from './components/Topics';
+import TopicArticles from './components/TopicArticles';
 
 
 
@@ -27,6 +29,8 @@ function App() {
           <Route path="/profile/:username" element={<Profile />} />
           <Route path="/articles" element={<Articles />} />
           <Route path="/article/:articleId" element={<ArticleIndividual />} />
+          <Route path="/topics" element={<Topics />} />
+          <Route path="/topics/:slug" element={<TopicArticles />} />
           </Route>
         </Routes>
       </div>
